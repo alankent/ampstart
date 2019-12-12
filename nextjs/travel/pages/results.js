@@ -17,7 +17,7 @@ limitations under the License.
 export const config = {amp: true};
 
 import Head from 'next/head';
-import { AmpIncludeAmpBind, } from '../components/amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
 import AmpState from '../components/amp/AmpState';
 import LikeButton from '../components/LikeButton';
 import HomeButton from '../components/HomeButton';
@@ -46,59 +46,60 @@ export default () => (
 
     <AmpIncludeAmpBind />
 
-    {/* This div makes it easier to collapse in document outline tools. */}
-    <div>
-      <AmpState id="ui_reset">{false}</AmpState>
-      <AmpState id="ui_filterPane">{false}</AmpState>
-      <AmpState id="ui_sortPane">{false}</AmpState>
+    <AmpState id="display">
+      {{
+        ui_reset: false,
+        ui_filterPane: false,
+        ui_sortPane: false,
 
-      <AmpState id="fields_query">{''}</AmpState>
-      <AmpState id="fields_query_initial">{''}</AmpState>
-      <AmpState id="fields_query_live">{''}</AmpState>
-      <AmpState id="fields_query_edited">{false}</AmpState>
-      <AmpState id="query_query">{''}</AmpState>
+        fields_query: '',
+        fields_query_initial: '',
+        fields_query_live: '',
+        fields_query_edited: false,
+        query_query: '',
 
-      <AmpState id="fields_departure">{''}</AmpState>
-      <AmpState id="fields_departure_initial">{''}</AmpState>
-      <AmpState id="fields_departure_edited">{false}</AmpState>
-      <AmpState id="query_departure">{''}</AmpState>
+        fields_departure: '',
+        fields_departure_initial: '',
+        fields_departure_edited: false,
+        query_departure: '',
 
-      <AmpState id="fields_return">{''}</AmpState>
-      <AmpState id="fields_return_initial">{''}</AmpState>
-      <AmpState id="fields_return_edited">{false}</AmpState>
-      <AmpState id="query_return">{''}</AmpState>
+        fields_return: '',
+        fields_return_initial: '',
+        fields_return_edited: false,
+        query_return: '',
 
-      <AmpState id="fields_type">{[]}</AmpState>
-      <AmpState id="fields_type_initial">{[]}</AmpState>
-      <AmpState id="fields_type_edited">{false}</AmpState>
-      <AmpState id="query_type">{[]}</AmpState>
+        fields_type: [],
+        fields_type_initial: [],
+        fields_type_edited: false,
+        query_type: [],
 
-      <AmpState id="fields_city">{[]}</AmpState>
-      <AmpState id="fields_city_initial">{[]}</AmpState>
-      <AmpState id="fields_city_edited">{false}</AmpState>
-      <AmpState id="query_city">{[]}</AmpState>
+        fields_city: [],
+        fields_city_initial: [],
+        fields_city_edited: false,
+        query_city: [],
 
-      <AmpState id="fields_sort">{'popularity-desc'}</AmpState>
-      <AmpState id="fields_sort_initial">{'popularity-desc'}</AmpState>
-      <AmpState id="fields_sort_edited">{false}</AmpState>
-      <AmpState id="query_sort">{'popularity-desc'}</AmpState>
+        fields_sort: 'popularity-desc',
+        fields_sort_initial: 'popularity-desc',
+        fields_sort_edited: false,
+        query_sort: 'popularity-desc',
 
-      <AmpState id="fields_maxPrice">{801}</AmpState>
-      <AmpState id="fields_maxPrice_initial">{801}</AmpState>
-      <AmpState id="fields_maxPrice_live">{801}</AmpState>
-      <AmpState id="fields_maxPrice_edited">{false}</AmpState>
-      <AmpState id="query_maxPrice">{801}</AmpState>
-    </div>
+        fields_maxPrice: 801,
+        fields_maxPrice_initial: 801,
+        fields_maxPrice_live: 801,
+        fields_maxPrice_edited: false,
+        query_maxPrice: 801,
+      }}
+    </AmpState>
 
     <div role="main">
       <div
         className="travel-overlay-fx-scale"
-        data-amp-bind-class="'travel-overlay-fx-scale' + (ui_filterPane ? ' travel-overlay-fx-scale-active' : '')">
+        data-amp-bind-class="'travel-overlay-fx-scale' + (display.ui_filterPane ? ' travel-overlay-fx-scale-active' : '')">
         <div
           className="travel-no-focus"
           role="button"
           tabIndex="-1"
-          on="tap:AMP.setState({ui_filterPane: false, ui_reset: false, ui_sortPane: false})">
+          on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: false}})">
           <ResultsNavBar />
         </div>
 
@@ -110,7 +111,7 @@ export default () => (
           className="travel-no-focus flex-auto overflow-auto"
           role="button"
           tabIndex="-1"
-          on="tap:AMP.setState({ui_filterPane: false, ui_reset: false, ui_sortPane: false})">
+          on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: false}})">
           <Results />
         </div>
       </div>

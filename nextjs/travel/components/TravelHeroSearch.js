@@ -1,6 +1,13 @@
+import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
+
 export default function TravelHeroSearch(props) {
   return (
     <div className="travel-hero-search">
+      <AmpIncludeAmpBind />
+      <AmpIncludeAmpList />
+      <AmpIncludeAmpMustache />
+
       <style jsx global>{`
         .travel-hero-search-dates {
           color: #fff;
@@ -151,17 +158,17 @@ export default function TravelHeroSearch(props) {
           name="query"
           placeholder="Where would you like to go?"
           on="
-              change:AMP.setState({
+              change:AMP.setState({display: {
                 fields_query: event.value,
                 fields_query_live: event.value,
                 fields_query_edited: query_query != event.value
-              });
-              input-debounced:AMP.setState({
+              }});
+              input-debounced:AMP.setState({display: {
                 fields_query_live: event.value
-              });
+              }});
             "
           defaultValue=""
-          data-amp-bind-value="fields_query"
+          data-amp-bind-value="display.fields_query"
         />
         <svg className="travel-icon" viewBox="0 0 74 100">
           <path
@@ -174,7 +181,7 @@ export default function TravelHeroSearch(props) {
       <amp-list
         layout="flex-item"
         src="/api/places?types=(regions)&types=(cities)&input="
-        data-amp-bind-src="'/api/places?types=(regions)&types=(cities)&input=' + fields_query_live">
+        data-amp-bind-src="'/api/places?types=(regions)&types=(cities)&input=' + display.fields_query_live">
         <template type="amp-mustache">
           <datalist id="locations">
             {`{{#predictions}}`}
@@ -186,7 +193,7 @@ export default function TravelHeroSearch(props) {
       <div className="travel-hero-search-dates flex my2 justify-around">
         <label
           className="travel-date-input relative bold flex-auto"
-          data-amp-bind-class="'travel-date-input relative bold flex-auto' + (fields_departure ? ' travel-date-input-touched' : '')">
+          data-amp-bind-class="'travel-date-input relative bold flex-auto' + (display.fields_departure ? ' travel-date-input-touched' : '')">
           <input
             className="block relative p0 z1"
             type="date"
@@ -195,10 +202,10 @@ export default function TravelHeroSearch(props) {
             title="yyyy-mm-dd"
             name="departure"
             on="
-                change:AMP.setState({
+                change:AMP.setState({display: {
                   fields_departure: true,
                   fields_departure_edited: true
-                })
+                }})
               "
           />
           <svg className="travel-icon" viewBox="0 0 100 100">
@@ -211,7 +218,7 @@ export default function TravelHeroSearch(props) {
         </label>
         <label
           className="travel-date-input relative bold flex-auto"
-          data-amp-bind-class="'travel-date-input relative bold flex-auto' + (fields_return ? ' travel-date-input-touched' : '')">
+          data-amp-bind-class="'travel-date-input relative bold flex-auto' + (display.fields_return ? ' travel-date-input-touched' : '')">
           <input
             className="block relative p0 z1"
             type="date"
@@ -220,13 +227,13 @@ export default function TravelHeroSearch(props) {
             title="yyyy-mm-dd"
             name="return"
             on="
-                change:AMP.setState({
+                change:AMP.setState({display: {
                   fields_return: true,
                   fields_return_edited: true
-                })
+                }})
               "
             disabled={true}
-            data-amp-bind-disabled="!fields_departure"
+            data-amp-bind-disabled="!display.fields_departure"
           />
           <svg className="travel-icon" viewBox="0 0 100 100">
             <path
@@ -242,7 +249,7 @@ export default function TravelHeroSearch(props) {
         href="results?amp=1"
         className="ampstart-btn travel-input-big rounded center bold white block col-12"
         on="
-            tap:AMP.setState({
+            tap:AMP.setState({display: {
                 ui_reset: false,
                 ui_filterPane: false,
                 query_query: fields_query,
@@ -259,7 +266,7 @@ export default function TravelHeroSearch(props) {
                 fields_type_edited: false,
                 query_sort: fields_sort,
                 fields_sort_edited: false,
-            })
+            }})
           ">
         Find Adventures & Tours
       </a>

@@ -1,9 +1,14 @@
 import LikeButton from '../components/LikeButton.js';
 import ActivityInfo from '../components/ActivityInfo.js';
+import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
 
 export default function Results(props) {
   return (
     <section className="travel-results pb1 md-pt1">
+      <AmpIncludeAmpBind />
+      <AmpIncludeAmpList />
+      <AmpIncludeAmpMustache />
       <div className="max-width-3 mx-auto px1 md-px2 flex">
         <amp-list
           className="travel-inline-list travel-results-list"
@@ -11,11 +16,11 @@ export default function Results(props) {
           noloading=""
           src="/api/search?maxPrice=800&query=&sort=popularity-desc"
           data-amp-bind-src="
-  '/api/search?maxPrice=' + (query_maxPrice < 801 ? query_maxPrice : 0) +
-  '&query=' + query_query +
-  (query_city.length ? '&cities[]=' + query_city.join('&cities[]=') : '') +
-  (query_type.length ? '&types[]=' + query_type.join('&types[]=') : '') +
-  '&sort=' + query_sort
+  '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
+  '&query=' + display.query_query +
+  (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
+  (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
+  '&sort=' + display.query_sort
 ">
           <template type="amp-mustache">
             <div>
@@ -114,8 +119,8 @@ export default function Results(props) {
                         tabIndex="0"
                         on="
                         tap:
-                          AMP.setState({ui_reset: false}),
-                          AMP.setState({
+                          AMP.setState({display: {ui_reset: false}}),
+                          AMP.setState({display: {
                             ui_filterPane: true,
                             ui_reset: true,
                             query_maxPrice: fields_maxPrice_initial,
@@ -128,7 +133,7 @@ export default function Results(props) {
                             query_type: fields_type_initial,
                             fields_type: fields_type_initial,
                             fields_type_edited: false
-                          })
+                          }})
                       ">
                         reset filters
                       </span>

@@ -1,22 +1,28 @@
+import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
+
 export default function FilterPane(props) {
   return (
     <div
       className="travel-pane"
-      data-amp-bind-class="'travel-pane' + (ui_filterPane ? ' travel-pane-visible' : '')">
+      data-amp-bind-class="'travel-pane' + (display.ui_filterPane ? ' travel-pane-visible' : '')">
+      <AmpIncludeAmpBind />
+      <AmpIncludeAmpList />
+      <AmpIncludeAmpMustache />
       <div className="travel-pane-overflow absolute overflow-hidden left-0 right-0 pb2">
         <div className="travel-pane-content travel-shadow travel-border-gray border-bottom">
           <div className="max-width-3 mx-auto px1 md-px2 py1">
             {/* <!-- Filters --> */}
             <div
               className="travel-filters clearfix mxn2"
-              data-amp-bind-class="'travel-filters clearfix mxn2' + (ui_reset ? ' travel-filters-reset' : '')">
+              data-amp-bind-class="'travel-filters clearfix mxn2' + (display.ui_reset ? ' travel-filters-reset' : '')">
               <div className="col col-12 md-col-4 px2 py1">
                 <div className="travel-filters-text h5 mb1 caps">max price</div>
 
                 {/* <!-- Price Selector --> */}
                 <div
                   className="h1"
-                  data-amp-bind-text="fields_maxPrice_live < 801 ? '$' + round(fields_maxPrice_live) : '$800+'">
+                  data-amp-bind-text="display.fields_maxPrice_live < 801 ? '$' + round(display.fields_maxPrice_live) : '$800+'">
                   $800+
                 </div>
                 {/* <!--
@@ -47,17 +53,17 @@ export default function FilterPane(props) {
                     min="1"
                     max="801"
                     defaultValue="801"
-                    data-amp-bind-value="'' + fields_maxPrice"
+                    data-amp-bind-value="'' + display.fields_maxPrice"
                     on="
-      change:AMP.setState({
+      change:AMP.setState({display: {
         ui_reset: false,
         fields_maxPrice: event.value,
         fields_maxPrice_live: event.value,
         fields_maxPrice_edited: event.value != query_maxPrice
-      });
-      input-debounced:AMP.setState({
+      }});
+      input-debounced:AMP.setState({display: {
         fields_maxPrice_live: event.value
-      });
+      }});
     "
                   />
                 </div>
@@ -68,11 +74,11 @@ export default function FilterPane(props) {
                     layout="flex-item"
                     src="/api/search?maxPrice=800&query=&sort=popularity-desc"
                     data-amp-bind-src="
-  '/api/search?maxPrice=' + (query_maxPrice < 801 ? query_maxPrice : 0) +
-  '&query=' + query_query +
-  (query_city.length ? '&cities[]=' + query_city.join('&cities[]=') : '') +
-  (query_type.length ? '&types[]=' + query_type.join('&types[]=') : '') +
-  '&sort=' + query_sort
+  '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
+  '&query=' + display.query_query +
+  (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
+  (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
+  '&sort=' + display.query_sort
 ">
                     <template type="amp-mustache">
                       Average Price for activites in {`{{stats.location}}`}
@@ -92,15 +98,15 @@ export default function FilterPane(props) {
                   name="type"
                   multiple=""
                   on="
-    select:AMP.setState({
+    select:AMP.setState({display: {
       ui_reset: false,
       fields_type: fields_type.includes(event.targetOption)
         ? copyAndSplice(fields_type, fields_type.indexOf(event.targetOption), 1)
         : fields_type.concat([event.targetOption]),
       fields_type_edited: true
-    })
+    }})
   "
-                  data-amp-bind-selected="fields_type">
+                  data-amp-bind-selected="display.fields_type">
                   <ul className="list-reset">
                     {/* <!-- <div className=""> --> */}
                     <li
@@ -387,24 +393,24 @@ export default function FilterPane(props) {
                   layout="flex-item"
                   src="/api/search?maxPrice=800&query=&sort=popularity-desc"
                   data-amp-bind-src="
-  '/api/search?maxPrice=' + (query_maxPrice < 801 ? query_maxPrice : 0) +
-  '&query=' + query_query +
-  (query_city.length ? '&cities[]=' + query_city.join('&cities[]=') : '') +
-  (query_type.length ? '&types[]=' + query_type.join('&types[]=') : '') +
-  '&sort=' + query_sort">
+  '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
+  '&query=' + display.query_query +
+  (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
+  (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
+  '&sort=' + display.query_sort">
                   <template type="amp-mustache">
                     <amp-selector
                       layout="container"
                       name="city"
                       multiple=""
-                      on="select: AMP.setState({
+                      on="select: AMP.setState({display: {
     ui_reset: false,
     fields_city: fields_city.includes(event.targetOption)
         ? copyAndSplice(fields_city, fields_city.indexOf(event.targetOption), 1)
         : fields_city.concat([event.targetOption]),
     fields_city_edited: true
-})"
-                      data-amp-bind-selected="fields_city">
+}})"
+                      data-amp-bind-selected="display.fields_city">
                       <ul className="list-reset">
                         {`{{#stats.cities}}`}
                         {`{{#isSelected}}`}
@@ -441,7 +447,7 @@ export default function FilterPane(props) {
             <button
               className="travel-filters-reset-btn ampstart-btn rounded bold"
               on="
-          tap:AMP.setState({
+          tap:AMP.setState({display: {
               ui_reset: true,
               query_maxPrice: fields_maxPrice_initial,
               fields_maxPrice: fields_maxPrice_initial,
@@ -453,16 +459,16 @@ export default function FilterPane(props) {
               query_type: fields_type_initial,
               fields_type: fields_type_initial,
               fields_type_edited: false,
-          })
+          }})
         ">
               Reset Filters
             </button>
             <button
               className="travel-filters-apply-btn ampstart-btn rounded bold"
               disabled=""
-              data-amp-bind-disabled="!fields_maxPrice_edited && !fields_city_edited && !fields_type_edited && !ui_reset"
+              data-amp-bind-disabled="!display.fields_maxPrice_edited && !display.fields_city_edited && !display.fields_type_edited && !display.ui_reset"
               on="
-            tap:AMP.setState({
+            tap:AMP.setState({display: {
                 ui_reset: false,
                 ui_filterPane: false,
                 query_query: fields_query,
@@ -479,7 +485,7 @@ export default function FilterPane(props) {
                 fields_type_edited: false,
                 query_sort: fields_sort,
                 fields_sort_edited: false,
-            })
+            }})
           ">
               Apply Filters
             </button>

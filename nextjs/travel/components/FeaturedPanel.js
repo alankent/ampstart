@@ -12,7 +12,7 @@ export default function FeaturedPanel(props) {
             <a
               href="results?amp=1"
               className="travel-featured-tile flex flex-auto relative travel-featured-color-blue"
-              on="tap:AMP.setState({fields_query: 'New York', query_query: 'New York'})">
+              on="tap:AMP.setState({display: {fields_query: 'New York', query_query: 'New York'}})">
               <amp-img
                 className="travel-object-cover flex-auto"
                 layout="responsive"
@@ -31,7 +31,7 @@ export default function FeaturedPanel(props) {
               <a
                 href="results?amp=1"
                 className="travel-featured-tile flex flex-auto relative travel-featured-color-cyan"
-                on="tap:AMP.setState({fields_query: 'Barcelona', query_query: 'Barcelona'})">
+                on="tap:AMP.setState({display: {fields_query: 'Barcelona', query_query: 'Barcelona'}})">
                 <amp-img
                   className="travel-object-cover flex-auto"
                   layout="responsive"
@@ -49,7 +49,7 @@ export default function FeaturedPanel(props) {
               <a
                 href="results?amp=1"
                 className="travel-featured-tile flex flex-auto pointer relative travel-featured-color-orange"
-                on="tap:AMP.setState({fields_query: 'Paris', query_query: 'Paris'})">
+                on="tap:AMP.setState({display: {fields_query: 'Paris', query_query: 'Paris'}})">
                 <amp-img
                   className="travel-object-cover flex-auto"
                   layout="responsive"
@@ -71,7 +71,7 @@ export default function FeaturedPanel(props) {
               <a
                 href="results?amp=1"
                 className="travel-featured-tile flex flex-auto pointer relative travel-featured-color-purple"
-                on="tap:AMP.setState({fields_query: 'Tokyo', query_query: 'Tokyo'})">
+                on="tap:AMP.setState({display: {fields_query: 'Tokyo', query_query: 'Tokyo'}})">
                 <amp-img
                   className="travel-object-cover flex-auto"
                   layout="responsive"
@@ -89,7 +89,7 @@ export default function FeaturedPanel(props) {
               <a
                 href="results?amp=1"
                 className="travel-featured-tile flex flex-auto relative travel-featured-color-cornflower"
-                on="tap:AMP.setState({fields_query: 'Chicago', query_query: 'Chicago'})">
+                on="tap:AMP.setState({display: {fields_query: 'Chicago', query_query: 'Chicago'}})">
                 <amp-img
                   className="travel-object-cover flex-auto"
                   layout="responsive"
@@ -108,7 +108,7 @@ export default function FeaturedPanel(props) {
             <a
               href="results?amp=1"
               className="travel-featured-tile flex flex-auto relative travel-featured-color-teal"
-              on="tap:AMP.setState({fields_query: 'Reykjavik', query_query: 'Reykjavik'})">
+              on="tap:AMP.setState({display: {fields_query: 'Reykjavik', query_query: 'Reykjavik'}})">
               <amp-img
                 className="travel-object-cover flex-auto"
                 layout="responsive"

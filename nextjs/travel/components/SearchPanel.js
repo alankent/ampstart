@@ -13,16 +13,16 @@ export default function ActivitiesPanel(props) {
               type="text"
               name="query"
               placeholder="Where would you like to go?"
-              on="change:AMP.setState({fields_query: event.value})"
+              on="change:AMP.setState({display: {fields_query: event.value}})"
               defaultValue=""
-              data-amp-bind-value="fields_query"
+              data-amp-bind-value="display.fields_query"
             />
             <span className="travel-input-group-sep travel-border-gray relative z1 block" />
             <a
               href="results?amp=1"
               className="travel-link travel-input travel-input-big line-height-2 link rounded-right nowrap text-decoration-none"
               on="
-                tap:AMP.setState({
+                tap:AMP.setState({display: {
                     ui_reset: false,
                     ui_filterPane: false,
                     query_query: fields_query,
@@ -39,7 +39,7 @@ export default function ActivitiesPanel(props) {
                     fields_type_edited: false,
                     query_sort: fields_sort,
                     fields_sort_edited: false,
-                })
+                }})
               ">
               Find my next adventure
             </a>
