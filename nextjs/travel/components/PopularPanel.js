@@ -1,4 +1,7 @@
-import LikeButton from '../components/LikeButton';
+import LikeButton from './LikeButton';
+import ActivityInfo from './ActivityInfo';
+
+// TODO: Clean up CSS.
 
 export default function PopularPanel(props) {
   return (
