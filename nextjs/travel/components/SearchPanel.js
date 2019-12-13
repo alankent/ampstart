@@ -19,7 +19,7 @@ export default function ActivitiesPanel(props) {
             />
             <span className="travel-input-group-sep travel-border-gray relative z1 block" />
             <a
-              href="results?amp=1"
+              href="results"
               className="travel-link travel-input travel-input-big line-height-2 link rounded-right nowrap text-decoration-none"
               on="
                 tap:AMP.setState({display: {

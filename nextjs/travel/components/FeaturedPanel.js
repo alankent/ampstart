@@ -10,7 +10,7 @@ export default function FeaturedPanel(props) {
         <div className="travel-featured-grid flex flex-wrap items-stretch">
           <div className="col-12 md-col-6 flex items-stretch flex-auto">
             <a
-              href="results?amp=1"
+              href="results"
               className="travel-featured-tile flex flex-auto relative travel-featured-color-blue"
               on="tap:AMP.setState({display: {fields_query: 'New York', query_query: 'New York'}})">
               <amp-img
@@ -29,7 +29,7 @@ export default function FeaturedPanel(props) {
             </a>
             <div className="flex flex-column items-stretch flex-auto">
               <a
-                href="results?amp=1"
+                href="results"
                 className="travel-featured-tile flex flex-auto relative travel-featured-color-cyan"
                 on="tap:AMP.setState({display: {fields_query: 'Barcelona', query_query: 'Barcelona'}})">
                 <amp-img
@@ -47,7 +47,7 @@ export default function FeaturedPanel(props) {
                 </div>
               </a>
               <a
-                href="results?amp=1"
+                href="results"
                 className="travel-featured-tile flex flex-auto pointer relative travel-featured-color-orange"
                 on="tap:AMP.setState({display: {fields_query: 'Paris', query_query: 'Paris'}})">
                 <amp-img
@@ -69,7 +69,7 @@ export default function FeaturedPanel(props) {
           <div className="col-12 md-col-6 flex items-stretch flex-auto">
             <div className="flex flex-column items-stretch flex-auto">
               <a
-                href="results?amp=1"
+                href="results"
                 className="travel-featured-tile flex flex-auto pointer relative travel-featured-color-purple"
                 on="tap:AMP.setState({display: {fields_query: 'Tokyo', query_query: 'Tokyo'}})">
                 <amp-img
@@ -87,7 +87,7 @@ export default function FeaturedPanel(props) {
                 </div>
               </a>
               <a
-                href="results?amp=1"
+                href="results"
                 className="travel-featured-tile flex flex-auto relative travel-featured-color-cornflower"
                 on="tap:AMP.setState({display: {fields_query: 'Chicago', query_query: 'Chicago'}})">
                 <amp-img
@@ -106,7 +106,7 @@ export default function FeaturedPanel(props) {
               </a>
             </div>
             <a
-              href="results?amp=1"
+              href="results"
               className="travel-featured-tile flex flex-auto relative travel-featured-color-teal"
               on="tap:AMP.setState({display: {fields_query: 'Reykjavik', query_query: 'Reykjavik'}})">
               <amp-img
