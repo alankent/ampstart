@@ -1,11 +1,15 @@
-import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
+import {
+  AmpIncludeAmpList,
+  AmpIncludeAmpBind,
+} from '../components/amp/AmpIncludeCustomElement';
 import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
 import AmpState from '../components/amp/AmpState';
 import script from '../components/amp/JsonScript';
 import SortPane from '../components/SortPane';
-import TravelSvg from '../components/svg/TravelSvg';
+import CaretDownSmallSvg from '../components/svg/CaretDownSmallSvg';
+import AmpListProps from '../components/utils/AmpListProps';
 
-export default function FilterBar(props) {
+export default function FilterBar({data}) {
   return (
     <section className="travel-filter-bar sm-hide xs-hide relative z2">
       <AmpIncludeAmpBind />
@@ -22,7 +26,7 @@ export default function FilterBar(props) {
             <span
               className="travel-flip travel-filters-text inline-block"
               data-amp-bind-class="'travel-flip travel-filters-text inline-block' + (display.ui_filterPane ? ' travel-flip-flipped' : '')">
-              <TravelSvg />
+              <CaretDownSmallSvg />
             </span>
           </div>
 
@@ -47,60 +51,21 @@ export default function FilterBar(props) {
             <div className="travel-fade-right pr1 py2">
               <span
                 className="travel-badge"
-                data-amp-bind-class="'travel-badge' + (display.query_type.length > 0 && display.query_type.length < 10 ? ' hide' : '')">
+                data-amp-bind-class={`'travel-badge' + (display.query_type.length > 0 && display.query_type.length < ${
+                  data.types.length
+                } ? ' hide' : '')`}>
                 All types
               </span>
 
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('active') ? '' : ' hide')">
-                Active
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('artistic') ? '' : ' hide')">
-                Artistic
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('drinks') ? '' : ' hide')">
-                Drinks
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('fashion') ? '' : ' hide')">
-                Fashion
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('food') ? '' : ' hide')">
-                Food
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('music') ? '' : ' hide')">
-                Music
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('nature') ? '' : ' hide')">
-                Nature
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('nightlife') ? '' : ' hide')">
-                Nightlife
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('tours') ? '' : ' hide')">
-                Tours
-              </span>
-              <span
-                className="travel-badge green hide"
-                data-amp-bind-class="'travel-badge green' + (display.query_type.includes('water') ? '' : ' hide')">
-                Water
-              </span>
+              {data.types.map(t => (
+                <span
+                  className="travel-badge green hide"
+                  data-amp-bind-class={`'travel-badge green' + (display.query_type.includes('${
+                    t.value
+                  }') ? '' : ' hide')`}>
+                  {t.text}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -113,13 +78,8 @@ export default function FilterBar(props) {
               <amp-list
                 className="travel-inline-list"
                 layout="flex-item"
-                src="/api/search?maxPrice=800&query=&sort=popularity-desc"
-                data-amp-bind-src="
-                      '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
-                      '&query=' + display.query_query +
-                      (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
-                      (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
-                      '&sort=' + display.query_sort">
+                src={AmpListProps(false).src}
+                data-amp-bind-src={AmpListProps(false).srcBind}>
                 <template type="amp-mustache">
                   {`{{#stats.allCities}}`}
                   <span className="travel-badge">All cities</span>
@@ -140,14 +100,8 @@ export default function FilterBar(props) {
             <amp-list
               className="travel-inline-list"
               layout="flex-item"
-              src="/api/search?maxPrice=800&query=&sort=popularity-desc"
-              data-amp-bind-src="
-  '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
-  '&query=' + display.query_query +
-  (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
-  (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
-  '&sort=' + display.query_sort
-">
+              src={AmpListProps(false).src}
+              data-amp-bind-src={AmpListProps(false).srcBind}>
               <template type="amp-mustache">
                 <span className="travel-filters-results-text">
                   {`{{stats.resultCount}}`}
@@ -169,48 +123,32 @@ export default function FilterBar(props) {
             on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: !ui_sortPane}})">
             <span className="travel-filters-text">Sort by </span>
             <div className="inline-block">
-              {/* <!--
-            Render an invisible set of labels to force the element to always be
-            the width of the widest label.
-          --> */}
-              <div aria-hidden="" className="travel-filter-bar-collapse bold">
-                Popular
-              </div>
-              <div aria-hidden="" className="travel-filter-bar-collapse bold">
-                Best Rated
-              </div>
-              <div aria-hidden="" className="travel-filter-bar-collapse bold">
-                New
-              </div>
-              <div aria-hidden="" className="travel-filter-bar-collapse bold">
-                Lowest Price
-              </div>
+              {/*
+                 Render an invisible set of labels to force the element to always be
+                 the width of the widest label.
+              */}
+              {data.sort.map(s => (
+                <div aria-hidden="" className="travel-filter-bar-collapse bold">
+                  {s.text}
+                </div>
+              ))}
 
               <span className="bold">
-                <span data-amp-bind-class="display.fields_sort == 'popularity-desc' ? '' : 'hide'">
-                  Popular
-                </span>
-                <span
-                  className="hide"
-                  data-amp-bind-class="display.fields_sort == 'rating-desc' ? '' : 'hide'">
-                  Best Rated
-                </span>
-                <span
-                  className="hide"
-                  data-amp-bind-class="display.fields_sort == 'age-asc' ? '' : 'hide'">
-                  New
-                </span>
-                <span
-                  className="hide"
-                  data-amp-bind-class="display.fields_sort == 'price-asc' ? '' : 'hide'">
-                  Lowest Price
-                </span>
+                {data.sort.map(s => (
+                  <span
+                    className={s.selected ? '' : 'hide'}
+                    data-amp-bind-class={`display.fields_sort == '${
+                      s.value
+                    }' ? '' : 'hide'`}>
+                    {s.text}
+                  </span>
+                ))}
               </span>
             </div>
             <span
               className="travel-flip travel-filters-text inline-block"
               data-amp-bind-class="'travel-flip travel-filters-text inline-block ' + (display.ui_sortPane ? ' travel-flip-flipped' : '')">
-              <TravelSvg />
+              <CaretDownSmallSvg />
             </span>
           </div>
           <SortPane />

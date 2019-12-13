@@ -27,94 +27,99 @@ import Results from '../components/Results';
 import FilterBar from '../components/FilterBar';
 import FilterPane from '../components/FilterPane';
 import SortBar from '../components/SortBar';
+import TravelResultsData from '../components/data/TravelResultsData';
 
-export default () => (
-  <>
-    <Head>
-      <title>Travel Template</title>
-      <link
-        rel="canonical"
-        href="https://www.ampstart.com/templates/travel/travel-results.amp"
-      />
-      <meta name="amp-google-client-id-api" content="googleanalytics" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700"
-        rel="stylesheet"
-      />
-      <link rel="stylesheet" type="text/css" href="/css/travel-results.css" />
-    </Head>
+export default function ResultsPage(props) {
+  const travelResultsData = TravelResultsData();
 
-    <AmpIncludeAmpBind />
+  return (
+    <>
+      <Head>
+        <title>Travel Template</title>
+        <link
+          rel="canonical"
+          href="https://www.ampstart.com/templates/travel/travel-results.amp"
+        />
+        <meta name="amp-google-client-id-api" content="googleanalytics" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="/css/travel-results.css" />
+      </Head>
 
-    <AmpState id="display">
-      {{
-        ui_reset: false,
-        ui_filterPane: false,
-        ui_sortPane: false,
+      <AmpIncludeAmpBind />
 
-        fields_query: '',
-        fields_query_initial: '',
-        fields_query_live: '',
-        fields_query_edited: false,
-        query_query: '',
+      <AmpState id="display">
+        {{
+          ui_reset: false,
+          ui_filterPane: false,
+          ui_sortPane: false,
 
-        fields_departure: '',
-        fields_departure_initial: '',
-        fields_departure_edited: false,
-        query_departure: '',
+          fields_query: '',
+          fields_query_initial: '',
+          fields_query_live: '',
+          fields_query_edited: false,
+          query_query: '',
 
-        fields_return: '',
-        fields_return_initial: '',
-        fields_return_edited: false,
-        query_return: '',
+          fields_departure: '',
+          fields_departure_initial: '',
+          fields_departure_edited: false,
+          query_departure: '',
 
-        fields_type: [],
-        fields_type_initial: [],
-        fields_type_edited: false,
-        query_type: [],
+          fields_return: '',
+          fields_return_initial: '',
+          fields_return_edited: false,
+          query_return: '',
 
-        fields_city: [],
-        fields_city_initial: [],
-        fields_city_edited: false,
-        query_city: [],
+          fields_type: [],
+          fields_type_initial: [],
+          fields_type_edited: false,
+          query_type: [],
 
-        fields_sort: 'popularity-desc',
-        fields_sort_initial: 'popularity-desc',
-        fields_sort_edited: false,
-        query_sort: 'popularity-desc',
+          fields_city: [],
+          fields_city_initial: [],
+          fields_city_edited: false,
+          query_city: [],
 
-        fields_maxPrice: 801,
-        fields_maxPrice_initial: 801,
-        fields_maxPrice_live: 801,
-        fields_maxPrice_edited: false,
-        query_maxPrice: 801,
-      }}
-    </AmpState>
+          fields_sort: 'popularity-desc',
+          fields_sort_initial: 'popularity-desc',
+          fields_sort_edited: false,
+          query_sort: 'popularity-desc',
 
-    <div role="main">
-      <div
-        className="travel-overlay-fx-scale"
-        data-amp-bind-class="'travel-overlay-fx-scale' + (display.ui_filterPane ? ' travel-overlay-fx-scale-active' : '')">
+          fields_maxPrice: 801,
+          fields_maxPrice_initial: 801,
+          fields_maxPrice_live: 801,
+          fields_maxPrice_edited: false,
+          query_maxPrice: 801,
+        }}
+      </AmpState>
+
+      <div role="main">
         <div
-          className="travel-no-focus"
-          role="button"
-          tabIndex="-1"
-          on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: false}})">
-          <ResultsNavBar />
-        </div>
+          className="travel-overlay-fx-scale"
+          data-amp-bind-class="'travel-overlay-fx-scale' + (display.ui_filterPane ? ' travel-overlay-fx-scale-active' : '')">
+          <div
+            className="travel-no-focus"
+            role="button"
+            tabIndex="-1"
+            on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: false}})">
+            <ResultsNavBar />
+          </div>
 
-        <FilterBar />
-        <FilterPane />
-        <SortBar />
+          <FilterBar data={travelResultsData.travel.data} />
+          <FilterPane />
+          <SortBar />
 
-        <div
-          className="travel-no-focus flex-auto overflow-auto"
-          role="button"
-          tabIndex="-1"
-          on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: false}})">
-          <Results />
+          <div
+            className="travel-no-focus flex-auto overflow-auto"
+            role="button"
+            tabIndex="-1"
+            on="tap:AMP.setState({display: {ui_filterPane: false, ui_reset: false, ui_sortPane: false}})">
+            <Results />
+          </div>
         </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+}

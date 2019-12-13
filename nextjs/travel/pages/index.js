@@ -26,10 +26,14 @@ import Activities from '../components/activities/Activities';
 import PopularPanel from '../components/PopularPanel';
 import Featured from '../components/Featured';
 import SearchPanel from '../components/SearchPanel';
-import DiscoverMobile from '../components/DiscoverMobile';
+import DiscoverMobile from '../components/discover/DiscoverMobile';
 import PageFooter from '../components/PageFooter';
+import TravelData from '../components/data/TravelData';
 
 export default function Index(props) {
+
+  const travelData = TravelData();
+
   return (
     <>
       <Head>
