@@ -1,4 +1,4 @@
-export default function DiscoverMobilePanel(props) {
+export default function DiscoverMobile(props) {
   return (
     <section className="travel-discover-mobile max-width-3 mx-auto py3 px1 md-hide lg-hide">
       <header>

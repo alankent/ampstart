@@ -1,4 +1,4 @@
-export default function(props) {
+export default function PlandLandingSvg(props) {
   return (
     <svg className="travel-icon" viewBox="0 0 100 100">
       <path

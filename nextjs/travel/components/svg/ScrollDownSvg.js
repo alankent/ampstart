@@ -1,4 +1,4 @@
-export default function(props) {
+export default function ScrollDownSvg(props) {
   return (
     <svg className="travel-icon" viewBox="0 0 66 100">
       <path

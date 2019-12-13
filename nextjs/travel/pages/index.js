@@ -19,14 +19,14 @@ export const config = {amp: true};
 import Head from 'next/head';
 import AmpState from '../components/amp/AmpState';
 import TravelHero from '../components/TravelHero';
-import DiscoverSection from '../components/DiscoverSection';
+import Discover from '../components/discover/Discover';
 import HomeButton from '../components/HomeButton';
-import AnglesArtwork from '../components/AnglesArtwork';
-import ActivitiesPanel from '../components/ActivitiesPanel';
+import Angles from '../components/angles/Angles';
+import Activities from '../components/activities/Activities';
 import PopularPanel from '../components/PopularPanel';
-import FeaturedPanel from '../components/FeaturedPanel';
+import Featured from '../components/Featured';
 import SearchPanel from '../components/SearchPanel';
-import DiscoverMobilePanel from '../components/DiscoverMobilePanel';
+import DiscoverMobile from '../components/DiscoverMobile';
 import PageFooter from '../components/PageFooter';
 
 export default function Index(props) {
@@ -104,15 +104,15 @@ export default function Index(props) {
         <div
           id="travel-landing-content"
           className="travel-landing-content relative">
-          <AnglesArtwork />
-          <DiscoverSection />
+          <Angles />
+          <Discover />
           <ActivitiesPanel />
 
           <div className="travel-footer-wrapper">
             <PopularPanel />
-            <FeaturedPanel />
+            <Featured />
             <SearchPanel />
-            <DiscoverMobilePanel />
+            <DiscoverMobile />
             <PageFooter />
           </div>
         </div>

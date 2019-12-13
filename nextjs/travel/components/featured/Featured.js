@@ -1,4 +1,4 @@
-export default function FeaturedPanel(props) {
+export default function Featured(props) {
   return (
     <section className="travel-featured pt3 relative clearfix">
       <header className="max-width-2 mx-auto px1 md-px2 relative">
