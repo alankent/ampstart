@@ -1,14 +1,13 @@
-import ActivityButton from './ActivityButton';
-import ActiveSvg from './svg/ActiveSvg';
-import ArtisticSvg from './svg/ArtisticSvg';
-import DrinksSvg from './svg/DrinksSvg';
-import FashionSvg from './svg/FashionSvg';
-import FoodSvg from './svg/FoodSvg';
-import MusicSvg from './svg/MusicSvg';
-import NatureSvg from './svg/NatureSvg';
-import NightlifeSvg from './svg/NightlifeSvg';
-import ToursSvg from './svg/ToursSvg';
-import WaterSvg from './svg/WaterSvg';
+import ActiveSvg from '../svg/ActiveSvg';
+import ArtisticSvg from '../svg/ArtisticSvg';
+import DrinksSvg from '../svg/DrinksSvg';
+import FashionSvg from '../svg/FashionSvg';
+import FoodSvg from '../svg/FoodSvg';
+import MusicSvg from '../svg/MusicSvg';
+import NatureSvg from '../svg/NatureSvg';
+import NightlifeSvg from '../svg/NightlifeSvg';
+import ToursSvg from '../svg/ToursSvg';
+import WaterSvg from '../svg/WaterSvg';
 
 export default function Activities(props) {
   return (
@@ -41,6 +40,7 @@ export default function Activities(props) {
               {name: 'water', title: 'Water', icon: <WaterSvg />},
             ].map(item => (
               <a
+                key={item.name}
                 href="results"
                 className={`travel-activities-activity travel-type-${item.name} mx1`}
                 on="

@@ -1,7 +1,7 @@
-import LikeButton from '../components/LikeButton.js';
-import ActivityInfo from '../components/ActivityInfo.js';
-import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
-import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
+import Like from '../like/Like.js';
+import ActivityInfo from '../popular/ActivityInfo.js';
+import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../amp/AmpIncludeCustomTemplate';
 
 export default function Results(props) {
   return (
@@ -49,7 +49,7 @@ export default function Results(props) {
                     {`{{/flags.new}}`}
                     <div className="travel-results-result-like absolute top-0 right-0">
                       <div className="p1">
-                        <LikeButton mustacheVariable="liked" />
+                        <Like mustacheVariable="liked" />
                       </div>
                     </div>
                   </div>

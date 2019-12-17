@@ -19,14 +19,11 @@ export const config = {amp: true};
 import Head from 'next/head';
 import {AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
 import AmpState from '../components/amp/AmpState';
-import LikeButton from '../components/LikeButton';
-import HomeButton from '../components/HomeButton';
-import ActivityInfo from '../components/ActivityInfo';
-import ResultsNavBar from '../components/ResultsNavBar';
-import Results from '../components/Results';
-import FilterBar from '../components/FilterBar';
-import FilterPane from '../components/FilterPane';
-import SortBar from '../components/SortBar';
+import ResultsNavBar from '../components/results-navbar/ResultsNavBar';
+import Results from '../components/results/Results';
+import FilterBar from '../components/filter-bar/FilterBar';
+import FilterPane from '../components/filter-pane/FilterPane';
+import SortBar from '../components/sort-bar/SortBar';
 import TravelResultsData from '../components/data/TravelResultsData';
 
 export default function ResultsPage(props) {

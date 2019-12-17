@@ -1,9 +1,9 @@
-import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
-import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
-import LocationPinSvg from '../components/svg/LocationPinSvg';
-import PlaneTakeoffSvg from '../components/svg/PlaneTakeoffSvg';
-import PlaneLandingSvg from '../components/svg/PlaneLandingSvg';
-import ScrollDownSvg from '../components/svg/ScrollDownSvg';
+import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../amp/AmpIncludeCustomTemplate';
+import LocationPinSvg from '../svg/LocationPinSvg';
+import PlaneTakeoffSvg from '../svg/PlaneTakeoffSvg';
+import PlaneLandingSvg from '../svg/PlaneLandingSvg';
+import ScrollDownSvg from '../svg/ScrollDownSvg';
 
 export default function TravelHeroSearch(props) {
   return (

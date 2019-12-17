@@ -1,4 +1,4 @@
-export default function ActivitiesPanel(props) {
+export default function Search(props) {
   return (
     <section className="travel-search py4 xs-hide sm-hide relative">
       <div className="px1 md-px2 pb1 relative">

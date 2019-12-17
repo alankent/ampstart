@@ -18,20 +18,19 @@ export const config = {amp: true};
 
 import Head from 'next/head';
 import AmpState from '../components/amp/AmpState';
-import TravelHero from '../components/TravelHero';
+import Hero from '../components/hero/Hero';
 import Discover from '../components/discover/Discover';
-import HomeButton from '../components/HomeButton';
 import Angles from '../components/angles/Angles';
 import Activities from '../components/activities/Activities';
-import PopularPanel from '../components/PopularPanel';
-import Featured from '../components/Featured';
-import SearchPanel from '../components/SearchPanel';
+import Popular from '../components/popular/Popular';
+import Featured from '../components/featured/Featured';
+import Search from '../components/search/Search';
 import DiscoverMobile from '../components/discover/DiscoverMobile';
-import PageFooter from '../components/PageFooter';
+import Footer from '../components/footer/Footer';
+import HomeIconSvg from '../components/svg/HomeIconSvg';
 import TravelData from '../components/data/TravelData';
 
 export default function Index(props) {
-
   const travelData = TravelData();
 
   return (
@@ -98,26 +97,30 @@ export default function Index(props) {
         <section className="relative z2">
           <header className="travel-header absolute top-0 right-0 left-0">
             <div className="px1 md-px2 py1 md-py2 flex justify-between items-center">
-              <HomeButton />
+              <a
+                href="/"
+                className="travel-results-navbar-icon h2 circle my1 md-my2">
+                <HomeIconSvg />
+              </a>
             </div>
           </header>
         </section>
 
-        <TravelHero />
+        <Hero />
 
         <div
           id="travel-landing-content"
           className="travel-landing-content relative">
           <Angles />
           <Discover />
-          <ActivitiesPanel />
+          <Activities />
 
           <div className="travel-footer-wrapper">
-            <PopularPanel />
+            <Popular />
             <Featured />
-            <SearchPanel />
+            <Search />
             <DiscoverMobile />
-            <PageFooter />
+            <Footer />
           </div>
         </div>
       </section>

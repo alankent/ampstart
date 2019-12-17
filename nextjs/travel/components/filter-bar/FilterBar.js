@@ -1,13 +1,13 @@
 import {
   AmpIncludeAmpList,
   AmpIncludeAmpBind,
-} from '../components/amp/AmpIncludeCustomElement';
-import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
-import AmpState from '../components/amp/AmpState';
-import script from '../components/amp/JsonScript';
-import SortPane from '../components/SortPane';
-import CaretDownSmallSvg from '../components/svg/CaretDownSmallSvg';
-import AmpListProps from '../components/utils/AmpListProps';
+} from '../amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../amp/AmpIncludeCustomTemplate';
+import AmpState from '../amp/AmpState';
+import script from '../amp/JsonScript';
+import SortPane from '../filter-bar/SortPane';
+import CaretDownSmallSvg from '../svg/CaretDownSmallSvg';
+import AmpListProps from '../utils/AmpListProps';
 
 export default function FilterBar({data}) {
   return (
@@ -136,6 +136,7 @@ export default function FilterBar({data}) {
               <span className="bold">
                 {data.sort.map(s => (
                   <span
+                    key={s.value}
                     className={s.selected ? '' : 'hide'}
                     data-amp-bind-class={`display.fields_sort == '${
                       s.value

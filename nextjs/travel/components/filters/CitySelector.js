@@ -1,9 +1,9 @@
 import {
   AmpIncludeAmpList,
   AmpIncludeAmpBind,
-} from '../components/amp/AmpIncludeCustomElement';
+} from '../amp/AmpIncludeCustomElement';
 
-export default function FiltersCitySelector(props) {
+export default function CitySelector(props) {
   return (
     <amp-list
       className="travel-block-list travel-city-selector"

@@ -1,9 +1,7 @@
-import LikeButton from './LikeButton';
+import Like from '../like/Like';
 import ActivityInfo from './ActivityInfo';
 
-// TODO: Clean up CSS.
-
-export default function PopularPanel(props) {
+export default function Popular(props) {
   return (
     <section className="travel-popular pb4 pt3 relative">
       <header className="max-width-3 mx-auto px1 md-px2">
@@ -33,7 +31,7 @@ export default function PopularPanel(props) {
 
                   <div className="travel-results-result-like absolute top-0 right-0">
                     <div className="p1">
-                      <LikeButton />
+                      <Like />
                     </div>
                   </div>
                 </div>
@@ -67,7 +65,7 @@ export default function PopularPanel(props) {
                   </div>
                   <div className="travel-results-result-like absolute top-0 right-0">
                     <div className="p1">
-                      <LikeButton />
+                      <Like />
                     </div>
                   </div>
                 </div>
@@ -96,7 +94,7 @@ export default function PopularPanel(props) {
                   </a>
                   <div className="travel-results-result-like absolute top-0 right-0">
                     <div className="p1">
-                      <LikeButton />
+                      <Like />
                     </div>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-export default function TravelSvg() {
+export default function CaretDownSmallSvg() {
   return (
     <svg className="travel-icon" viewBox="0 0 66 100">
       <path

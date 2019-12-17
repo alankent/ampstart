@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import {string} from 'prop-types';
 
-LikeButton.propTypes = {
+Like.propTypes = {
   mustacheVariable: string
 };
 
@@ -38,7 +38,7 @@ function ifElse({mustacheVariable = null}, contentIfTrue, contentIfFalse) {
   }
 }
 
-export default function LikeButton(props) {
+export default function Like(props) {
   return (
     <div className="travel-results-result-like absolute top-0 right-0">
       <div className="p1">

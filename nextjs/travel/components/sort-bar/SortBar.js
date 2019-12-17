@@ -1,4 +1,4 @@
-import {AmpIncludeAmpSelector} from '../components/amp/AmpIncludeCustomElement.js';
+import {AmpIncludeAmpSelector} from '../amp/AmpIncludeCustomElement.js';
 
 export default function SortPane(props) {
   return (

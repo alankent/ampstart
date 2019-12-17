@@ -1,6 +1,6 @@
-import TravelHeroSearch from '../components/TravelHeroSearch';
+import HeroSearch from './HeroSearch';
 
-export default function TravelHero(props) {
+export default function Hero(props) {
   return (
     <>
       <style jsx global>{`
@@ -230,7 +230,7 @@ export default function TravelHero(props) {
                 Find and book activities, tours, and experiences.
               </h2>
             </header>
-            <TravelHeroSearch />
+            <HeroSearch />
           </div>
         </div>
       </section>

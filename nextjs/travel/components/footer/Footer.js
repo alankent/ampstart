@@ -1,6 +1,6 @@
-import HomeIconSvg from '../components/svg/HomeIconSvg';
+import HomeIconSvg from '../svg/HomeIconSvg';
 
-export default function PageFooter(props) {
+export default function Footer(props) {
   return (
     <footer className="travel-footer overflow-hidden">
       <div className="relative bg-black">

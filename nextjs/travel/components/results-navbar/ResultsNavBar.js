@@ -1,7 +1,7 @@
-import HomeButton from '../components/HomeButton.js';
-import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../components/amp/AmpIncludeCustomElement';
-import {AmpIncludeAmpMustache} from '../components/amp/AmpIncludeCustomTemplate';
-import SlidersControlSvg from '../components/svg/SlidersControlSvg';
+import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../amp/AmpIncludeCustomElement';
+import {AmpIncludeAmpMustache} from '../amp/AmpIncludeCustomTemplate';
+import SlidersControlSvg from '../svg/SlidersControlSvg';
+import HomeIconSvg from '../svg/HomeIconSvg.js';
 
 export default function ResultsNavBar(props) {
   return (
@@ -11,7 +11,11 @@ export default function ResultsNavBar(props) {
       <AmpIncludeAmpMustache />
       <div className="px1 md-px2 flex justify-between items-stretch">
         <div className="flex items-stretch">
-          <HomeButton />
+          <a
+            href="/"
+            className="travel-results-navbar-icon h2 circle my1 md-my2">
+            <HomeIconSvg />
+          </a>
           <div className="ml3 flex items-center xs-hide sm-hide">
             <amp-list
               className="travel-block-list flex items-center"
