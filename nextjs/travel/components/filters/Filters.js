@@ -26,7 +26,7 @@ export default function Filters(props) {
           <amp-list
             className="travel-inline-list"
             layout="flex-item"
-            src="/api/search?maxPrice=800&query=&sort=popularity-desc"
+            src="/api/search?maxPrice=0&query=&sort=popularity-desc"
             data-amp-bind-src="
                       '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
                       '&query=' + display.query_query +

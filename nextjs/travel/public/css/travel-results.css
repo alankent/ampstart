@@ -2574,7 +2574,7 @@ amp-img.circle img {
 
 .travel-city-selector [option]:after {
   content: "";
-  background: url(/static/img/travel/icon/checkmark-purple.png) no-repeat 50% 50%;
+  background: url(/img/travel/icon/checkmark-purple.png) no-repeat 50% 50%;
   background-size: contain;
   text-align: center;
   display: block;
@@ -2700,35 +2700,35 @@ amp-img.circle img {
 }
 
 .travel-img-icon-checkmark-purple {
-  background-image: url(/static/img/travel/icon/checkmark-purple.png)
+  background-image: url(/img/travel/icon/checkmark-purple.png)
 }
 
 .travel-img-icon-map-pin-outline-gray {
-  background-image: url(/static/img/travel/icon/map-pin-outline-gray.png)
+  background-image: url(/img/travel/icon/map-pin-outline-gray.png)
 }
 
 .travel-img-icon-map-pin-transparent {
-  background-image: url(/static/img/travel/icon/map-pin-transparent.png)
+  background-image: url(/img/travel/icon/map-pin-transparent.png)
 }
 
 .travel-img-icon-plane-landing-transparent {
-  background-image: url(/static/img/travel/icon/plane-landing-transparent.png)
+  background-image: url(/img/travel/icon/plane-landing-transparent.png)
 }
 
 .travel-img-icon-plane-taking-off-transparent {
-  background-image: url(/static/img/travel/icon/plane-taking-off-transparent.png)
+  background-image: url(/img/travel/icon/plane-taking-off-transparent.png)
 }
 
 .travel-img-icon-sad-face-gray {
-  background-image: url(/static/img/travel/icon/sad-face-gray.png)
+  background-image: url(/img/travel/icon/sad-face-gray.png)
 }
 
 .travel-img-icon-star-green {
-  background-image: url(/static/img/travel/icon/star-green.png)
+  background-image: url(/img/travel/icon/star-green.png)
 }
 
 .travel-img-icon-star-silver {
-  background-image: url(/static/img/travel/icon/star-silver.png)
+  background-image: url(/travel/icon/star-silver.png)
 }
 
 .travel-like-heart-solid {

@@ -21,7 +21,7 @@ export default function ResultsNavBar(props) {
               className="travel-block-list flex items-center"
               layout="flex-item"
               noloading=""
-              src="/api/search?maxPrice=800&query=&sort=popularity-desc"
+              src="/api/search?maxPrice=0&query=&sort=popularity-desc"
               data-amp-bind-src="
                       '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
                       '&query=' + display.query_query +
@@ -80,7 +80,7 @@ export default function ResultsNavBar(props) {
             className="travel-block-list flex flex-auto center"
             layout="flex-item"
             noloading=""
-            src="/api/search?maxPrice=800&query=&sort=popularity-desc"
+            src="/api/search?maxPrice=0&query=&sort=popularity-desc"
             data-amp-bind-src="
                     '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
                     '&query=' + display.query_query +
