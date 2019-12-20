@@ -11,6 +11,7 @@ import NatureSvg from '../svg/NatureSvg';
 import NightlifeSvg from '../svg/NightlifeSvg';
 import ToursSvg from '../svg/ToursSvg';
 import WaterSvg from '../svg/WaterSvg';
+import AmpListProps from '../utils/AmpListProps';
 
 export default function Filters(props) {
   return (
@@ -26,14 +27,8 @@ export default function Filters(props) {
           <amp-list
             className="travel-inline-list"
             layout="flex-item"
-            src="/api/search?maxPrice=0&query=&sort=popularity-desc"
-            data-amp-bind-src="
-                      '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
-                      '&query=' + display.query_query +
-                      (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
-                      (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
-                      '&sort=' + display.query_sort
-                    ">
+            src={AmpListProps(false).src}
+            data-amp-bind-src={AmpListProps(false).srcBind}>
             <template type="amp-mustache">
               Average Price for activites in {`{{stats.location}}`}
               is between ${`{{stats.price.average.min}}`} and $
@@ -54,9 +49,9 @@ export default function Filters(props) {
           on="
             select:AMP.setState({display: {
               ui_reset: false,
-              fields_type: fields_type.includes(event.targetOption)
-                ? copyAndSplice(fields_type, fields_type.indexOf(event.targetOption), 1)
-                : fields_type.concat([event.targetOption]),
+              fields_type: display.fields_type.includes(event.targetOption)
+                ? copyAndSplice(display.fields_type, display.fields_type.indexOf(event.targetOption), 1)
+                : display.fields_type.concat([event.targetOption]),
               fields_type_edited: true
             }})
           "

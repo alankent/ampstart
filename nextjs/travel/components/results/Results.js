@@ -1,5 +1,6 @@
-import Like from '../like/Like.js';
-import ActivityInfo from '../popular/ActivityInfo.js';
+import Like from '../like/Like';
+import ActivityInfo from '../popular/ActivityInfo';
+import AmpListProps from '../utils/AmpListProps';
 import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../amp/AmpIncludeCustomElement';
 import {AmpIncludeAmpMustache} from '../amp/AmpIncludeCustomTemplate';
 
@@ -14,14 +15,8 @@ export default function Results(props) {
           className="travel-inline-list travel-results-list"
           layout="flex-item"
           noloading=""
-          src="/api/search?maxPrice=0&query=&sort=popularity-desc"
-          data-amp-bind-src="
-  '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
-  '&query=' + display.query_query +
-  (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
-  (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
-  '&sort=' + display.query_sort
-">
+          src={AmpListProps(false).src}
+          data-amp-bind-src={AmpListProps(false).srcBind}>
           <template type="amp-mustache">
             <div>
               <div className="flex flex-wrap mxn1 flex-auto">
@@ -58,7 +53,7 @@ export default function Results(props) {
                     price="{{price.value}}"
                     stars="{{reviews.averageRating.range}}"
                     reviews="{{reviews.count}}"
-                    location="Oaxaca"
+                    location="{{location.city}}"
                   />
 
                   {/* <!--
@@ -123,15 +118,15 @@ export default function Results(props) {
                           AMP.setState({display: {
                             ui_filterPane: true,
                             ui_reset: true,
-                            query_maxPrice: fields_maxPrice_initial,
-                            fields_maxPrice: fields_maxPrice_initial,
-                            fields_maxPrice_live: fields_maxPrice_initial,
+                            query_maxPrice: display.fields_maxPrice_initial,
+                            fields_maxPrice: display.fields_maxPrice_initial,
+                            fields_maxPrice_live: display.fields_maxPrice_initial,
                             fields_maxPrice_edited: false,
-                            query_city: fields_city_initial,
-                            fields_city: fields_city_initial,
+                            query_city: display.fields_city_initial,
+                            fields_city: display.fields_city_initial,
                             fields_city_edited: false,
-                            query_type: fields_type_initial,
-                            fields_type: fields_type_initial,
+                            query_type: display.fields_type_initial,
+                            fields_type: display.fields_type_initial,
                             fields_type_edited: false
                           }})
                       ">

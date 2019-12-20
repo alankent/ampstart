@@ -1,7 +1,8 @@
 import {AmpIncludeAmpList, AmpIncludeAmpBind} from '../amp/AmpIncludeCustomElement';
 import {AmpIncludeAmpMustache} from '../amp/AmpIncludeCustomTemplate';
 import SlidersControlSvg from '../svg/SlidersControlSvg';
-import HomeIconSvg from '../svg/HomeIconSvg.js';
+import HomeIconSvg from '../svg/HomeIconSvg';
+import AmpListProps from '../utils/AmpListProps';
 
 export default function ResultsNavBar(props) {
   return (
@@ -21,13 +22,8 @@ export default function ResultsNavBar(props) {
               className="travel-block-list flex items-center"
               layout="flex-item"
               noloading=""
-              src="/api/search?maxPrice=0&query=&sort=popularity-desc"
-              data-amp-bind-src="
-                      '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
-                      '&query=' + display.query_query +
-                      (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
-                      (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
-                      '&sort=' + display.query_sort">
+              src={AmpListProps(false).src}
+              data-amp-bind-src={AmpListProps(false).srcBind}>
               <template type="amp-mustache">
                 <div className="flex items-center">
                   <label className="travel-input-icon relative">

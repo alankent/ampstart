@@ -59,6 +59,7 @@ export default function FilterBar({data}) {
 
               {data.types.map(t => (
                 <span
+                  key={t.value}
                   className="travel-badge green hide"
                   data-amp-bind-class={`'travel-badge green' + (display.query_type.includes('${
                     t.value

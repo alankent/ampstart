@@ -2,19 +2,15 @@ import {
   AmpIncludeAmpList,
   AmpIncludeAmpBind,
 } from '../amp/AmpIncludeCustomElement';
+import AmpListProps from '../utils/AmpListProps';
 
 export default function CitySelector(props) {
   return (
     <amp-list
       className="travel-block-list travel-city-selector"
       layout="flex-item"
-      src="/api/search?maxPrice=0&query=&sort=popularity-desc"
-      data-amp-bind-src="
-        '/api/search?maxPrice=' + (display.query_maxPrice < 801 ? display.query_maxPrice : 0) +
-        '&query=' + display.query_query +
-        (display.query_city.length ? '&cities[]=' + display.query_city.join('&cities[]=') : '') +
-        (display.query_type.length ? '&types[]=' + display.query_type.join('&types[]=') : '') +
-        '&sort=' + display.query_sort">
+      src={AmpListProps(false).src}
+      data-amp-bind-src={AmpListProps(false).srcBind}>
 
       <AmpIncludeAmpList />
       <AmpIncludeAmpBind />
@@ -26,9 +22,9 @@ export default function CitySelector(props) {
           multiple=""
           on="select: AMP.setState({display: {
                 ui_reset: false,
-                fields_city: fields_city.includes(event.targetOption)
-                    ? copyAndSplice(fields_city, fields_city.indexOf(event.targetOption), 1)
-                    : fields_city.concat([event.targetOption]),
+                fields_city: display.fields_city.includes(event.targetOption)
+                    ? copyAndSplice(display.fields_city, display.fields_city.indexOf(event.targetOption), 1)
+                    : display.fields_city.concat([event.targetOption]),
                 fields_city_edited: true
             }})"
           data-amp-bind-selected="display.fields_city">

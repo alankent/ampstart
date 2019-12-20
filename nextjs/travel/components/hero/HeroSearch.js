@@ -165,7 +165,7 @@ export default function TravelHeroSearch(props) {
               change:AMP.setState({display: {
                 fields_query: event.value,
                 fields_query_live: event.value,
-                fields_query_edited: query_query != event.value
+                fields_query_edited: display.query_query != event.value
               }});
               input-debounced:AMP.setState({display: {
                 fields_query_live: event.value
@@ -241,19 +241,19 @@ export default function TravelHeroSearch(props) {
           tap:AMP.setState({display: {
               ui_reset: false,
               ui_filterPane: false,
-              query_query: fields_query,
+              query_query: display.fields_query,
               fields_query_edited: false,
-              query_departure: fields_departure,
+              query_departure: display.fields_departure,
               fields_departure_edited: false,
-              query_return: fields_return,
+              query_return: display.fields_return,
               fields_return_edited: false,
-              query_maxPrice: fields_maxPrice,
+              query_maxPrice: display.fields_maxPrice,
               fields_maxPrice_edited: false,
-              query_city: fields_city,
+              query_city: display.fields_city,
               fields_city_edited: false,
-              query_type: fields_type,
+              query_type: display.fields_type,
               fields_type_edited: false,
-              query_sort: fields_sort,
+              query_sort: display.fields_sort,
               fields_sort_edited: false,
           }})
         ">
